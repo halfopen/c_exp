@@ -51,7 +51,7 @@ void DispList(const LinkList* const L) {
     const char * delimiter = "\0";
     LinkNode *p = L->first;
     while (p != NULL) {
-        printf("%s %d ", delimiter, p->data); 
+        printf("%s %c ", delimiter, p->data); 
         delimiter = NEXT_DELIMITER;
         p = p->next;
     }

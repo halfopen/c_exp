@@ -2,29 +2,56 @@
 #include <cstdlib>
 #include "llist.h"
 #include "listset.h"
+#include <cstring>
+
+
+//去重排序
+void sort(char *s)
+{	int j = 0;
+	//asc字符表
+	char list[128]={0};
+	//printf("%s\n",s);
+	for(int i=0;s[i]!='\0'; i++){
+		list[s[i]] = 1;
+	}
+	for(int i=0;i<128;i++){
+		if(list[i]==1){
+			s[j] = i;
+			j++;
+		}
+	}
+	s[j]=0;
+	//printf("%s\n",s);
+}
+
 
 int main() {
-	int n, m;
-	int temp;
+	char sa[1024],sb[1024],*p;
 	LinkList *A, *B, *S = NULL, *U = NULL, *D = NULL;
 
 	// 初始化两个列表用于存放初始集合
 	InitList(A);
 	InitList(B);
-
-	// 获取两个集合的大小
-	scanf("%d%d", &n, &m);
+	
+	// 获取两个集合
+	scanf("%s%s", sa, sb);
+	printf("A:%s\t\tB:%s\n",sa,sb);
+	
+	sort(sa);
+	sort(sb);
+	printf("Sort\nA:%s\t\tB:%s\n",sa,sb);
 
 	// 读入集合 A, 假设输入是已排序的, 并且不存在重复的元素
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &temp);
-		ListInsert(A, i, temp);
+	for (unsigned int i = 0; i < strlen(sa); i++) {
+		if( LocateElem(A, sa[i]) ==-1){ 
+			ListInsert(A, i, sa[i]);
+		}
 	}
 
 	// 读入集合 A, 假设输入是已排序的, 并且不存在重复的元素
-	for (int i = 0; i < m; i++) {
-		scanf("%d", &temp);
-		ListInsert(B, i, temp);
+	for (unsigned int i = 0; i < strlen(sb); i++) {
+		if( LocateElem(B, sb[i]) ==-1)
+			ListInsert(B, i, sb[i]);
 	}
 
 	// 计算交、并、差
