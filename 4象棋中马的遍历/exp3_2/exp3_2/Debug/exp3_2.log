@@ -1,0 +1,16 @@
+﻿生成启动时间为 2015/3/5 10:05:16。
+     1>项目“C:\Users\Administrator\Desktop\新建文件夹\exp\4象棋中马的遍历\exp3_2\exp3_2\exp3_2.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\exp3_2.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BoardUi.cpp
+         BoardUi.cpp
+     1>c:\users\administrator\desktop\新建文件夹\exp\4象棋中马的遍历\exp3_2\exp3_2\boardui.cpp(54): error C2665: “loadimage”: 2 个重载中没有一个可以转换所有参数类型
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\easyx.h(267): 可能是“void loadimage(IMAGE *,LPCTSTR,int,int,bool)”
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\easyx.h(268): 或       “void loadimage(IMAGE *,LPCTSTR,LPCTSTR,int,int,bool)”
+                 尝试匹配参数列表“(IMAGE *, char [], char [])”时
+     1>已完成生成项目“C:\Users\Administrator\Desktop\新建文件夹\exp\4象棋中马的遍历\exp3_2\exp3_2\exp3_2.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.92
