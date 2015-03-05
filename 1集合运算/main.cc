@@ -5,15 +5,21 @@
 #include <cstring>
 
 
-//去重排序
+/*去重排序
+**s: 字符串数组
+*/
 void sort(char *s)
 {	int j = 0;
 	//asc字符表
 	char list[128]={0};
 	//printf("%s\n",s);
+	
+	//如果字符串中的字符在表中出现，把它的位置标记为1
+	//中文字符不在其中，会舍弃掉
 	for(int i=0;s[i]!='\0'; i++){
-		list[s[i]] = 1;
+		if(s[i] <128) list[s[i]] = 1;
 	}
+	//将标记的字符写回字符串，字符串有序无重复
 	for(int i=0;i<128;i++){
 		if(list[i]==1){
 			s[j] = i;
@@ -26,7 +32,7 @@ void sort(char *s)
 
 
 int main() {
-	char sa[1024],sb[1024],*p;
+	char sa[1024],sb[1024];
 	LinkList *A, *B, *S = NULL, *U = NULL, *D = NULL;
 
 	// 初始化两个列表用于存放初始集合
@@ -35,20 +41,20 @@ int main() {
 	
 	// 获取两个集合
 	scanf("%s%s", sa, sb);
-	printf("A:%s\t\tB:%s\n",sa,sb);
+	printf("Input:\n\tA:%s\n\tB:%s\n",sa,sb);
 	
 	sort(sa);
 	sort(sb);
-	printf("Sort\nA:%s\t\tB:%s\n",sa,sb);
+	printf("Sort\n\tA:%s\n\tB:%s\n",sa,sb);
 
-	// 读入集合 A, 假设输入是已排序的, 并且不存在重复的元素
+	// 读入集合 A, 是已排序的, 并且不存在重复的元素
 	for (unsigned int i = 0; i < strlen(sa); i++) {
 		if( LocateElem(A, sa[i]) ==-1){ 
 			ListInsert(A, i, sa[i]);
 		}
 	}
 
-	// 读入集合 A, 假设输入是已排序的, 并且不存在重复的元素
+	// 读入集合 B, 是已排序的, 并且不存在重复的元素
 	for (unsigned int i = 0; i < strlen(sb); i++) {
 		if( LocateElem(B, sb[i]) ==-1)
 			ListInsert(B, i, sb[i]);
