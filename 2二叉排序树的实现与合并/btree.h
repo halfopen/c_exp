@@ -9,6 +9,11 @@ typedef struct node
         struct node * rchild;
 }BTNode;
 
+//创建二叉排序树
+void InsertBST(BTNode *&b,ElemType key);
+//把二叉排序树 b1, b2 合并到b1
+void PreMergeBST(BTNode *&b1, BTNode *b2);
+
 //创建二叉树 
 void CreateBTNode(BTNode *& b, char * str);
 

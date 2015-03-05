@@ -3,6 +3,36 @@
 #include "btree.h"
 
 #define MaxSize 1024
+
+//创建二叉排序树
+void InsertBST(BTNode *&b,ElemType key)
+{	BTNode *f, *p = b;
+	while(p){
+		if(p->data == key)return;
+		f = p;
+		p = (key <p->data)? p->lchild: p->rchild;
+	}
+	p = (BTNode *)malloc(sizeof(BTNode));
+	p->data = key; 
+	p->lchild = p->rchild =NULL;
+	if(b == NULL)
+		b = p;
+	else{
+		if(key < f->data)f->lchild = p;
+		else f->rchild = p;
+	}
+}
+
+
+//把二叉排序树 b1, b2 合并到b1
+void PreMergeBST(BTNode *&b1, BTNode *b2)
+{	if(b2 != NULL)
+	{	InsertBST(b1, b2->data);
+		PreMergeBST(b1, b2->lchild);
+		PreMergeBST(b1, b2->rchild);
+     }
+}
+
 //创建二叉树 
 void CreateBTNode(BTNode * &b, char * str)
 {    BTNode * St[MaxSize], *p;
@@ -100,7 +130,7 @@ int  FindParents(BTNode *b, ElemType x, char *path, int  pathlen)
 		//puts("\nfind from the left tree");
 		return FindParents(b->rchild, x, path, pathlen+1);		
 	}
-	
+	return 0;
 }
 
 //查找所有孩子
@@ -147,7 +177,7 @@ void DispBTNode1(BTNode * b, int l)
      if(b != NULL)
      {    printf("\n");
           while(i--)printf("  ");
-          printf("%c", b->data);   
+          printf("%d", b->data);   
           if(b->lchild != NULL || b->rchild != NULL) 
           {	if(b->lchild == NULL)	//
 		{	i = l+1; 
